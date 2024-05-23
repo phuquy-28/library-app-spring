@@ -1,7 +1,7 @@
 package com.phuquy28.springbootlibrary.entity;
 
-import jakarta.persistence.*;
 import lombok.Data;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "checkout")

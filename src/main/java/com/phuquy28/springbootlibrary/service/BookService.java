@@ -4,11 +4,12 @@ import com.phuquy28.springbootlibrary.dao.BookRepository;
 import com.phuquy28.springbootlibrary.dao.CheckoutRepository;
 import com.phuquy28.springbootlibrary.entity.Book;
 import com.phuquy28.springbootlibrary.entity.Checkout;
-import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.Optional;
+
 
 @Service
 @Transactional

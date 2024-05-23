@@ -1,8 +1,7 @@
 package com.phuquy28.springbootlibrary.entity;
 
-import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.stereotype.Repository;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "book")
