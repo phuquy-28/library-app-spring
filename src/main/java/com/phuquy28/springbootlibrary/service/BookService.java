@@ -15,6 +15,7 @@ import java.util.Optional;
 public class BookService {
     private BookRepository bookRepository;
     private CheckoutRepository checkoutRepository;
+
     public BookService(BookRepository bookRepository, CheckoutRepository checkoutRepository) {
         this.bookRepository = bookRepository;
         this.checkoutRepository = checkoutRepository;
@@ -38,5 +39,18 @@ public class BookService {
         checkoutRepository.save(checkout);
 
         return book.get();
+    }
+
+    public Boolean checkoutBookByUser(String emailUser, Long bookId) {
+        Checkout validateCheckout = checkoutRepository.findByUserEmailAndBookId(emailUser, bookId);
+        if (validateCheckout != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public int currentLoansCount(String emailUser) {
+        return checkoutRepository.findBookByUserEmail(emailUser).size();
     }
 }
