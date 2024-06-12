@@ -1,6 +1,7 @@
 package com.phuquy28.springbootlibrary.config;
 
 import com.phuquy28.springbootlibrary.entity.Book;
+import com.phuquy28.springbootlibrary.entity.Message;
 import com.phuquy28.springbootlibrary.entity.Review;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
@@ -18,11 +19,14 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors){
         HttpMethod[] theUnsupportedActions = {HttpMethod.POST, HttpMethod.PUT, HttpMethod.DELETE, HttpMethod.PATCH};
 
+        // Disable HTTP methods for Book: POST, PUT, DELETE, PATCH
         config.exposeIdsFor(Book.class);
         config.exposeIdsFor(Review.class);
+        config.exposeIdsFor(Message.class);
 
         disableHttpMethods(Book.class, config, theUnsupportedActions);
         disableHttpMethods(Review.class, config, theUnsupportedActions);
+        disableHttpMethods(Message.class, config, theUnsupportedActions);
 
 //        Configure CORS Mapping
         cors.addMapping(config.getBasePath() + "/**")
